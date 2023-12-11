@@ -20,11 +20,11 @@ func main() {
 
 	bag := map[string]int{"red": 12, "green": 13, "blue": 14}
 	sum := 0
+	matcher := regexp.MustCompile(`Game (\d+): (.*)`)
 
 	for scanner.Scan() {
 		line := scanner.Text()
 		ok := true
-		matcher := regexp.MustCompile(`Game (\d+): (.*)`)
 		matched := matcher.FindAllStringSubmatch(line, -1)[0]
 
 		id, err := strconv.Atoi(matched[1])
